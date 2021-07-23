@@ -27,9 +27,7 @@ At first i tried to clean up the data...my foundings and thesolutions that appli
 First look at our variables...
 
                          count unique          top   freq         mean          std          min          25%          50%          75%          max
-id                       15020    NaN          NaN    NaN  4.13166e+07  2.10282e+06  3.46463e+07  4.04649e+07  4.21217e+07  4.28345e+07  4.34641e+07
 ranking_score            15020    NaN          NaN    NaN       117.73      31.5087           16         95.5        122.4          143        182.8
-agent_id                 15020    NaN          NaN    NaN      11539.6      3166.37         5976         9206        11210        13445        20017
 geography_name           15020      4  south beach   7189          NaN          NaN          NaN          NaN          NaN          NaN          NaN
 sq_meters                15020    NaN          NaN    NaN      196.768      1150.25            1           89          137       243.25       140000
 price                    15020    NaN          NaN    NaN       535022       461399         8000       235000       395000       690000      2.7e+06
@@ -38,42 +36,42 @@ floor                    14330     15            0   4888          NaN          
 subtype                  15020     10    apartment   9172          NaN          NaN          NaN          NaN          NaN          NaN          NaN
 rooms                    15020    NaN          NaN    NaN      2.88395      1.53089            0            2            3            4           25
 no_of_bathrooms          15020    NaN          NaN    NaN      1.67397      1.24737            0            1            1            2           21
-
+...
 
 
 2 boxplots created on aggregated data in order to show the price behaviour grouped by property type and geography area and a sceond grouped on reserved mode first by geography area and after by type. 
 
-1st Conclusion : Higher prices occured in Northern Sub and South Beach than in Gentrification area and Beesy neighborhood. The prices also are much more spreaded ini the first 2 areas with many extreme high values.Also great differences on prices of properties based on type.
+  1st Conclusion : Higher prices occured in Northern Sub and South Beach than in Gentrification area and Beesy neighborhood. The prices also are much more  spreaded ini the first 2 areas with many extreme high values.Also great differences on prices of properties based on type.
 
-2nd Conclusion : A violin plot created on aggregated data of Ranking_score, Ad_type and Geography_area. No ranking hierarchy found based on Ad_type and correlated with ranking_score. The results based on the plot and on pearson correlation. Both found a weak correlation on the Gentrification Area.
+  2nd Conclusion : A violin plot created on aggregated data of Ranking_score, Ad_type and Geography_area. No ranking hierarchy found based on Ad_type and correlated with ranking_score. The results based on the plot and on pearson correlation. Both found a weak correlation on the Gentrification Area.
 
-3rd conclusion : A Regression tried to applied on data for predicting the price on each property.
+  3rd conclusion : A Regression tried to applied on data for predicting the price on each property.
 
-1)At first all the fields with categorical data replaced True/False/NaN to 1/0/0.
-2)Geography area hotencoded to each one of the 4 areas
-3)As well as Subtype hotencoded to each area. 
-4)Above boolean fields added in the dataframe and the 2 columns of subtype and geography area droped.
-5)The dataframe splitted to the Price list and the Variables matrix
-6)The 2 matrices splitted to train sets and predicted set.
-7)Non linear regresion (RandomForestRegression) applied to data to train the set and apply the prediction.
-8)The prediction returned over 75% of accuracy for 80% of minimum price.
-9)Most weighted Variables found...
-    Variable: sq_meters            Importance: 0.63
-    Variable: year_of_construction Importance: 0.07
-    Variable: south beach          Importance: 0.04
-    Variable: floor                Importance: 0.03
-    Variable: ranking_score        Importance: 0.02
-    Variable: renovation_year      Importance: 0.02
-    Variable: beesy neighborhood   Importance: 0.02
-    Variable: rooms                Importance: 0.01
-    Variable: no_of_bathrooms      Importance: 0.01
-    Variable: no_of_wc             Importance: 0.01
-    Variable: pool                 Importance: 0.01
-    Variable: NaNs                 Importance: 0.01
-    Variable: Yes                  Importance: 0.01
-    Variable: detached             Importance: 0.01
-    Variable: maisonette           Importance: 0.01
-10)For a next step and for better predictions we can keep this set of variables (maybe some more that we think that they are important) and run again the algorithm for a better prediction ~79%.
+  1)At first all the fields with categorical data replaced True/False/NaN to 1/0/0.
+  2)Geography area hotencoded to each one of the 4 areas
+  3)As well as Subtype hotencoded to each one of the given type of properties. 
+  4)Above boolean fields added in the dataframe and the 2 columns of subtype and geography area droped.
+  5)The dataframe splitted to the Price list and the Variables matrix
+  6)The 2 matrices splitted to train sets and predicted set.
+  7)Non linear regresion (RandomForestRegression) applied to data to train the set and apply the prediction.
+  8)The prediction returned over 75% of accuracy for 80% of minimum price.
+  9)Most weighted Variables found...
+      Variable: sq_meters            Importance: 0.63
+      Variable: year_of_construction Importance: 0.07
+      Variable: south beach          Importance: 0.04
+      Variable: floor                Importance: 0.03
+      Variable: ranking_score        Importance: 0.02
+      Variable: renovation_year      Importance: 0.02
+      Variable: beesy neighborhood   Importance: 0.02
+      Variable: rooms                Importance: 0.01
+      Variable: no_of_bathrooms      Importance: 0.01
+      Variable: no_of_wc             Importance: 0.01
+      Variable: pool                 Importance: 0.01
+      Variable: NaNs                 Importance: 0.01
+      Variable: Yes                  Importance: 0.01
+      Variable: detached             Importance: 0.01
+      Variable: maisonette           Importance: 0.01
+  10)For a next step and for better predictions we can keep this set of variables (maybe some more that we think that they are important) and run again the algorithm for a better prediction ~79%.
 
 
 
